@@ -28,6 +28,6 @@ class UploadsController < ApplicationController
   end
 
   def index
-    @uploads = Upload.all
+    @uploads = S3_BUCKET.objects
   end
 end
