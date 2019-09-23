@@ -2,5 +2,7 @@
 <% @uploads.each do |upload| %>
 	<div>
 		<%= upload.key %>
+		<iframe src="<%= upload.public_url %>"></iframe>
+		<%= link_to 'Delete', upload_path(@uploads, key: upload.key), method: :delete %>
 	</div>
 <% end %>

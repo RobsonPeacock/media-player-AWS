@@ -7,7 +7,7 @@ class UploadsController < ApplicationController
     obj = S3_BUCKET.objects[params[:file].original_filename]
 
     # Upload the file
-    obj.write(file: params[:file], acl: :bucket_owner_full_control)
+    obj.write(file: params[:file], acl: :public_read)
 
     # Create an object for the upload
     @upload = Upload.new(url: obj.public_url, name: obj.key)
@@ -24,4 +24,10 @@ class UploadsController < ApplicationController
   def index
     @uploads = S3_BUCKET.objects
   end
+
+  def destroy
+    delete = S3_BUCKET.objects.delete(params[:key])
+    redirect_to :action => 'index'
+  end
+
 end
