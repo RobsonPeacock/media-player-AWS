@@ -22,10 +22,11 @@ class UploadsController < ApplicationController
   end
 
   def index
-    @uploads = S3_BUCKET.objects
+    @uploads = Upload.all
   end
 
   def destroy
+    @upload = Upload.find_by_name(params[:key]).destroy
     delete = S3_BUCKET.objects.delete(params[:key])
     redirect_to :action => 'index'
   end
