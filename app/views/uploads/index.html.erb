@@ -1,8 +1,30 @@
 <h1>All uploads</h1>
-<% @uploads.each do |upload| %>
-	<div>
-		<%= upload.name %>
-		<iframe src="<%= upload.url %>"></iframe>
-		<%= link_to 'Delete', upload_path(@uploads, key: upload.name), method: :delete %>
-	</div>
-<% end %>
+
+<div class="music-player-container">
+	<iframe id="media_player" src=""></iframe>
+</div>
+
+<div class="container">
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Name</th>
+				<th scope="col"></th>
+				<th scope="col"></th>
+				<th scope="col"></th>
+			</tr>
+		</thead>
+		<tbody>
+
+			<% @uploads.each do |upload| %>
+			<tr>
+				<td><%= upload.name %></td>
+				<td><%= link_to 'Play', '#', s3_url: "#{upload.url}", id: 'play-button' %></td>
+				<td><%= link_to 'Edit', '#' %></td>
+				<td><%= link_to 'Delete', upload_path(@uploads, key: upload.name), method: :delete %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
