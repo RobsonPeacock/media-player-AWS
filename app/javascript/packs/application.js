@@ -16,3 +16,11 @@ import "../stylesheets/application"
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+  $(document).ready(function() {
+     $('#play-button').click(function() {
+        var media_url = $('#play-button').attr('s3_url');
+        var string_url = encodeURI(media_url);
+        $('.music-player-container #media_player').src = string_url;
+     })
+  });
