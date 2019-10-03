@@ -1,7 +1,19 @@
-<h1>Upload a file</h1>
+<div id="homepage" class="container-fluid">
+	<div class="row">
+		<div class="col-lg-9 file-upload">
+			<h1>Upload a file</h1>
 			<div class="float-right p-2"><%= link_to 'All uploads >', uploads_path %></div>
 
-<%= form_tag uploads_path, enctype: 'multipart/form-data' do %>
-	<%= file_field_tag :file  %>
-	<%= submit_tag 'Upload file' %>
-<% end %>
+			<%= form_tag uploads_path, enctype: 'multipart/form-data' do %>
+			<%= file_field_tag :file, accept: 'audio/mp3,audio/wav', class: 'mt-2' %><br/>
+			<%#= label_tag 'New Playlist' %>
+			<%#= text_field_tag :playlist %>
+			<%#= select_tag :existing_playlist, options_from_collection_for_select(@playlists, "id", "name") %>
+			<%= submit_tag 'Upload file', class: 'btn btn-primary mt-2' %>
+			<% end %>
+		</div>
+		<div class="col-lg-3 bg-dark playlists">
+			<h1>Playlists</h1>
+		</div>
+	</div>
+</div>
