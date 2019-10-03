@@ -22,7 +22,7 @@
 			<% @uploads.each do |upload| %>
 			<tr>
 				<td><%= upload.name %></td>
-				<td><button href="" id="play-button" data-original-link="<%= upload.url %>">Play</button></td>
+				<td><button href="" id="play-button" data-original-link="<%= upload.url %>", class="btn btn-primary">Play</button></td>
 				<td><%= link_to 'Delete', upload_path(@uploads, key: upload.name), method: :delete %></td>
 			</tr>
 			<% end %>
