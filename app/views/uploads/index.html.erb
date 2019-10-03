@@ -22,8 +22,7 @@
 			<% @uploads.each do |upload| %>
 			<tr>
 				<td><%= upload.name %></td>
-				<td><%= link_to 'Play', '#', s3_url: "#{upload.url}", id: 'play-button' %></td>
-				<td><%= link_to 'Edit', '#' %></td>
+				<td><button href="" id="play-button" data-original-link="<%= upload.url %>">Play</button></td>
 				<td><%= link_to 'Delete', upload_path(@uploads, key: upload.name), method: :delete %></td>
 			</tr>
 			<% end %>

@@ -18,9 +18,11 @@ import "../stylesheets/application"
 // const imagePath = (name) => images(name, true)
 
   $(document).ready(function() {
-     $('#play-button').click(function() {
-        var media_url = $('#play-button').attr('s3_url');
-        var string_url = encodeURI(media_url);
-        $('.music-player-container #media_player').src = string_url;
+     $('*[id*=play-button]').click(function() {
+        const button = $(this).data('original-link');
+        const media_player = document.querySelector('#media_player');
+
+        media_player.src = button;
+
      })
   });
